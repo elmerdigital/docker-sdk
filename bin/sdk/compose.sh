@@ -43,6 +43,7 @@ function Compose::ensureCliRunning() {
 
 # ---------------
 function Compose::exec() {
+    set -x
     local tty
     [ -t -0 ] && tty='' || tty='-T'
 
@@ -69,6 +70,7 @@ function Compose::exec() {
         -e COMPOSER_AUTH="${COMPOSER_AUTH}" \
         cli \
         bash -c 'bash ~/bin/cli.sh'
+    set +x
 }
 
 function Compose::verboseMode() {
